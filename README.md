@@ -1,6 +1,6 @@
-<p align="center">
-## Horizon Suite
-</p>
+
+# Horizon Suite
+Made for gaming communities.
 
 
 ## About Horizon
