@@ -1,6 +1,7 @@
 
 # Horizon Suite
 Made for gaming communities.
+## Horizon is a work in progress, forums/admin area not yet complete, but still partially working. Not recommended for live sites.
 
 
 ## About Horizon
