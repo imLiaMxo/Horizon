@@ -1,4 +1,4 @@
-<p align="center"><a href="#">Horizon Suite</a></p>
+<p align="center"><a href="#">## Horizon Suite</a></p>
 
 
 ## About Horizon
