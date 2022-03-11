@@ -39,12 +39,12 @@
             <div class="bg-white dark:bg-gray-700 dark:text-white w-full rounded shadow-xl overflow-hidden p-1 mt-5 transition-500">
                 <div class="font-bold text-3xl p-2">{{ $board->name }}</div>
                 <span class="text-sm font-normal p-2"> {{ $board->description }}</span>
-                    <div class="text-center">
-                        <a href="{{route('forums.threads.create', $board->id)}}" class="border-2 border-blue-500 text-black px-4 py-2 rounded-md text-1xl font-medium hover:bg-blue-500 transition duration-300">
+                    <div class="text-right">
+                        <a href="{{route('forums.threads.create', $board->id)}}" class="border-2 border-blue-500 mb-3 text-black px-8 py-2 rounded-md text-1xl font-medium hover:bg-blue-500 transition duration-300 dark:text-white">
                             Create Thread
                         </a>
                     </div>
-                <hr class="hr mb-2"/>
+                <hr class="hr mt-4 mb-2"/>
                 @forelse($threads as $thread)
                     <a href="{{ route('forums.threads.show', $thread->id) }}" class="w-full flex p-3 pl-4 items-center hover:bg-gray-300 dark:hover:bg-indigo-700 rounded-lg cursor-pointer border border-gray-400 dark:border-indigo-800 mb-2">
                         <div class="mr-4">

@@ -4,11 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\RoleForm;
+use App\Http\Requests\Admin\AssignForm;
+use App\Http\Requests\Admin\CompleteForm;
 use App\Models\Permission;
 use App\Models\Apply;
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
-use DB;
 
 class AdminApplicationController extends Controller
 {
@@ -29,10 +31,27 @@ class AdminApplicationController extends Controller
     public function show($applicationId): View
     {
         $application = Apply::where('id', $applicationId)->first();
+        $appUser = User::where('steamid', $application->steamid)->first();
 
         return view('admin.viewapp', [
             'application' => $application,
+            'userData' => $appUser
         ]);
+    }
+
+    public function assign(AssignForm $assign): RedirectResponse
+    {
+        $application = Apply::where('id', $assign->input('identifier'))->update(['assigned_to' => $assign->input('assigner') ? $assign->input('assigner') : NULL, 'current_step' => $assign->input('assigner') ? 1 : NULL]);
+
+        toastr()->success('Successfully done that!');
+        return redirect()->route('admin.apply.view', $assign->input('identifier'));
+    }
+
+    public function complete(CompleteForm $request): RedirectResponse
+    {
+        $application = Apply::where('id', $request->input('identifier'))->update(['current_step' => $request->input('action') == 'decline' ? 1 : 2, 'reason' => $request->input('reason') ? $request->input('reason') : NULL, 'outcome' => $request->input('action') == 'decline' ? 1 : 2]);
+        User::where('steamid', $request->steamid)->first()->assignRole('new_member');
+        return redirect()->route('admin.apply.view', $request->input('identifier'));
     }
 
 }

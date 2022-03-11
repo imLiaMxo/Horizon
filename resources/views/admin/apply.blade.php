@@ -22,7 +22,7 @@
             <div class="font-bold text-lg">{{ $application->username }}<span class="text-base font-normal"> {{ $application->age }}</span></div>
                 <div class="text-xs text-gray-500 dark:text-white">
                     <span class="mr-2">{{ $application->created_at->toDayDateTimeString() }}</span>
-                    @if(!$application->assigned)
+                    @if(!$application->assigned_to)
                         <span class="mr-2 text-white font-bold bg-green-500 p-1">NEW</span>
                     @endif
                 </div>
