@@ -56,7 +56,7 @@ class AdminSettingsController extends Controller
 
         Cache::forget('configurations');
 
-        //toastr()->success('Successfully updated the application settings!');
+        toastr()->success('Successfully updated the application settings!');
         return redirect()->back();
     }
 }

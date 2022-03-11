@@ -33,7 +33,7 @@ class BoardController extends Controller
             'roles' => $request->roles ?? []
         ]));
 
-        //toastr()->success('Successfully created board!');
+        toastr()->success('Successfully created board!');
         return redirect()->route('admin.forums.boards');
     }
 
@@ -46,7 +46,7 @@ class BoardController extends Controller
             ['category_id' => $category->id, 'roles' => $request->roles ?? []]
         ));
 
-        //toastr()->success('Successfully updated board!');
+        toastr()->success('Successfully updated board!');
         return redirect()->route('admin.forums.boards');
     }
 
@@ -54,7 +54,7 @@ class BoardController extends Controller
     {
         $board->delete();
 
-        //toastr()->success('Successfully deleted board!');
+        toastr()->success('Successfully deleted board!');
         return redirect()->route('admin.forums.boards');
     }
 
@@ -69,6 +69,6 @@ class BoardController extends Controller
            'parent_id' => $parent ? request('parentId') : null
         ]);
 
-        //toastr()->success('Successfully sorted the boards!');
+        toastr()->success('Successfully sorted the boards!');
     }
 }

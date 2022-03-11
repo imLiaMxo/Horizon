@@ -46,6 +46,10 @@ Route::get('/notifications/{id}', 'NotificationsController@read')->name('notific
 Route::group(['prefix' => 'forums'], function () {
     // Home
     Route::get('/', 'Forums\ForumController')->name('forums.index');
+    Route::get('/boards/{board}', 'Forums\BoardController')->name('forums.boards.show');
+    Route::get('/boards/{board}/create', 'Forums\ThreadController@create')->name('forums.threads.create');
+
+    Route::get('/threads/{thread}', 'Forums\ThreadController@show')->name('forums.threads.show');
 
 });
 
@@ -85,12 +89,20 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/applications', 'Admin\AdminApplicationController@index')->name('admin.apply');
     Route::get('/applications/{applicationId}', 'Admin\AdminApplicationController@show')->name('admin.apply.view');
 
+    // Servers
+    Route::get('/servers', 'Admin\AdminServerController@index')->name('admin.servers');
+    Route::post('/servers', 'Admin\AdminServerController@store')->name('admin.servers.store');
+    Route::delete('/servers/{server}', 'Admin\AdminServerController@destroy')->name('admin.servers.destroy');
+
+    // Forums
+    Route::get('/forums', 'Admin\Forums\IndexController@index')->name('admin.forums.index');
+
     Route::get('/categories', 'Admin\Forums\CategoryController@index')->name('admin.categories');
     Route::post('/categories', 'Admin\Forums\CategoryController@store')->name('admin.categories.store');
     Route::patch('/categories/{category}', 'Admin\Forums\CategoryController@update')->name('admin.categories.update');
     Route::delete('/categories/{category}', 'Admin\Forums\CategoryController@destroy')->name('admin.categories.destroy');
 
-    Route::get('/boards', 'Admin\Forums\BoardController@index')->name('admin.boards');
+    Route::get('/boards', 'Admin\Forums\BoardController@index')->name('admin.forums.boards');
     Route::post('/boards', 'Admin\Forums\BoardController@store')->name('admin.boards.store');
     Route::patch('/boards/{board}', 'Admin\Forums\BoardController@update')->name('admin.boards.update');
     Route::delete('/boards/{board}', 'Admin\Forums\BoardController@destroy')->name('admin.boards.destroy');

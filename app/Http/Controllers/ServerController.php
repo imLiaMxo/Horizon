@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
-use DB;
+use App\Models\Server;
 
 class ServerController extends Controller
 {
     public function index()
     {
-        $serversList = DB::table("servers")->get();
+        $serversList = Server::all();
         $responseArray = array();
         $battlemetricsURL = "https://api.battlemetrics.com/servers/";
         $headers = [

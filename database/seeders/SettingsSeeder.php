@@ -208,7 +208,28 @@ class SettingsSeeder extends Seeder
                 'type' => 'rich_text',
                 'display_name' => 'Terms of Service',
                 'category' => 'store.misc'
-            ]
+            ],
+            [
+                'key' => 'hero_title',
+                'value' => 'A Community fit for the best.',
+                'type' => 'rich_text',
+                'display_name' => 'Hero Title',
+                'category' => 'general'
+            ],
+            [
+                'key' => 'hero_desc',
+                'value' => 'Spend less time worrying about who you\'re playing with, spend more time having fun with the best on our servers which are online 24/7!',
+                'type' => 'rich_text',
+                'display_name' => 'Hero Description',
+                'category' => 'general'
+            ],
+            [
+                'key' => 'hero_img',
+                'value' => 'https://nomads-clan.com/img/89e321226740c4e8a15ece6605a6378e.png',
+                'type' => 'text',
+                'display_name' => 'Hero Image',
+                'category' => 'general'
+            ],
         ];
     }
 }

@@ -10,8 +10,8 @@
         Use the navigation panel on the left to configure your application.
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 w-full">
-        <div class="flex flex-col bg-gray-800 shadow-lg rounded p-4">
-            <h1 class="text-xl font-semibold text-white">
+        <div class="flex flex-col bg-white shadow-lg rounded p-4">
+            <h1 class="text-xl font-semibold text-gray-500">
                 Create New Role
             </h1>
             
@@ -20,23 +20,23 @@
                     @csrf
                     <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-white py-2">Role Name <abbr title="required">*</abbr></label>
+                            <label class="font-semibold text-gray-500 py-2">Role Name <abbr title="required">*</abbr></label>
                             <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="name"
                             placeholder="administrator" name="name" value="{{old('name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-white py-2">Display Name <abbr title="required">*</abbr></label>
+                            <label class="font-semibold text-gray-500 py-2">Display Name <abbr title="required">*</abbr></label>
                             <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" placeholder="Administrator" name="display_name" value="{{old('display_name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>
                     <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-white py-2">Display Colour <abbr title="required">*</abbr></label>
+                        <label class="font-semibold text-gray-500 py-2">Display Colour <abbr title="required">*</abbr></label>
                         <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="color" name="color" value="{{old('color', '#673AB7')}}">
                     </div>
                     <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-white py-2">Role Precedence <abbr title="required">*</abbr></label>
+                        <label class="font-semibold text-gray-500 py-2">Role Precedence <abbr title="required">*</abbr></label>
                         <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" id="precedence" name="precedence" value="{{old('precedence', 5)}}">
                     </div>
 
@@ -48,7 +48,7 @@
                         value="{{ $permission->name }}"
                         id="check-{{ $permission->id }}"
                         name="permissions[]">
-                        <label for="check-{{ $permission->id }}" class="font-semibold text-white py-2">{{ $permission->display_name}} <abbr title="required">*</abbr></label>
+                        <label for="check-{{ $permission->id }}" class="font-semibold text-gray-500 py-2">{{ $permission->display_name}} <abbr title="required">*</abbr></label>
                     </div>
                     @endforeach
                     <p class="text-xs text-red-500 text-right my-3">Required fields are marked with an
@@ -115,23 +115,23 @@
 
                               <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                                 <div class="mb-3 space-y-2 w-full text-xs">
-                                    <label class="font-semibold text-white py-2">Role Name <abbr title="required">*</abbr></label>
+                                    <label class="font-semibold text-gray-500 py-2">Role Name <abbr title="required">*</abbr></label>
                                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="name"
                                     placeholder="administrator" name="name" value="{{$role->name}}">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                                 <div class="mb-3 space-y-2 w-full text-xs">
-                                    <label class="font-semibold text-white py-2">Display Name <abbr title="required">*</abbr></label>
+                                    <label class="font-semibold text-gray-500 py-2">Display Name <abbr title="required">*</abbr></label>
                                     <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" placeholder="Administrator" name="display_name" value="{{$role->display_name}}">
                                     <p class="text-red text-xs hidden">Please fill out this field.</p>
                                 </div>
                             </div>
                             <div class="mb-3 space-y-2 w-full text-xs">
-                                <label class="font-semibold text-white py-2">Display Colour <abbr title="required">*</abbr></label>
+                                <label class="font-semibold text-gray-500 py-2">Display Colour <abbr title="required">*</abbr></label>
                                 <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="color" name="color" value="{{$role->color}}">
                             </div>
                             <div class="mb-3 space-y-2 w-full text-xs">
-                                <label class="font-semibold text-white py-2">Role Precedence <abbr title="required">*</abbr></label>
+                                <label class="font-semibold text-gray-500 py-2">Role Precedence <abbr title="required">*</abbr></label>
                                 <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" id="precedence" name="precedence" value="{{$role->precedence}}">
                             </div>
                             <!-- Modal footer -->

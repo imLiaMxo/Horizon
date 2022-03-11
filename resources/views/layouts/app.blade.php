@@ -89,6 +89,7 @@
     
     <body class="duration-500 bg-white dark:bg-gray-600">
         @yield('content')
+        @include('includes.footer')
         <script src="{{ asset('js/app.js?v=5') }}"></script>
         @yield('scripts')
     </body>
