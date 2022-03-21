@@ -54,7 +54,7 @@ class BoardController extends Controller
     {
         $board->delete();
 
-        toastr()->success('Successfully deleted board!');
+        toastr()->warning('Successfully deleted board!');
         return redirect()->route('admin.forums.boards');
     }
 

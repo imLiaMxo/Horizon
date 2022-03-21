@@ -53,7 +53,7 @@ class AdminServerController extends Controller
     {
         Server::where('bm_id', $server)->delete();
 
-        toastr()->success('Successfully deleted server!');
+        toastr()->warning('Deleted server!');
         return redirect()->route('admin.servers');
     }
 }

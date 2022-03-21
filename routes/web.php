@@ -89,6 +89,9 @@ Route::group(['prefix' => 'admin'], function () {
     Route::get('/applications', 'Admin\AdminApplicationController@index')->name('admin.apply');
     Route::get('/applications/{applicationId}', 'Admin\AdminApplicationController@show')->name('admin.apply.view');
 
+    Route::patch('/applications/{applicationId}', 'Admin\AdminApplicationController@assign')->name('admin.apply.assign');
+    Route::patch('/applications/{applicationId}/complete', 'Admin\AdminApplicationController@complete')->name('admin.apply.complete');
+
     // Servers
     Route::get('/servers', 'Admin\AdminServerController@index')->name('admin.servers');
     Route::post('/servers', 'Admin\AdminServerController@store')->name('admin.servers.store');
@@ -109,3 +112,10 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::patch('/boards', 'Admin\Forums\BoardController@sort')->name('admin.boards.sort');
 });
+
+
+Route::get('/install', 'InstallController@index')->name('install.welcome')
+    ->withoutMiddleware(AuthenticateSession::class);
+
+Route::post('/install', 'InstallController@install')->name('install.complete')
+    ->withoutMiddleware(AuthenticateSession::class);

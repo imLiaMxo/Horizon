@@ -34,6 +34,7 @@ class AdminUserController extends Controller
         $roles = $request->input('roles');
         $user->syncRoles($roles);
 
+        toastr()->success('Successfully updated ' . $user->name);
         return redirect()->route('admin.users');
     }
 }

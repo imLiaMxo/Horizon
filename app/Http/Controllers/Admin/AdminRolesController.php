@@ -35,7 +35,7 @@ class AdminRolesController extends Controller
         $role->givePermissionTo(
             $request->input('permissions')
         );
-
+        toastr()->success('Successfully create new role!');
         return redirect()->route('admin.roles');
     }
 
@@ -49,6 +49,7 @@ class AdminRolesController extends Controller
             $request->input('permissions')
         );
 
+        toastr()->success('Successfully updated role!');
         return redirect()->route('admin.roles');
     }
 
@@ -58,6 +59,7 @@ class AdminRolesController extends Controller
 
         $role->delete();
 
+        toastr()->warning('You have removed a role.');
         return redirect()->route('admin.roles');
     }
 

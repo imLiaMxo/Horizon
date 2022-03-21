@@ -41,7 +41,7 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        toastr()->success('Successfully deleted category!');
+        toastr()->warning('Successfully deleted category!');
         return redirect()->route('admin.categories');
     }
 }

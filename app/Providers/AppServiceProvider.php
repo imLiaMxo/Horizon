@@ -24,6 +24,8 @@ class AppServiceProvider extends ServiceProvider
             Cache::forget('configurations');
             $this->loadConfigurations();
         });
+        
+        \URL::forceScheme('https');
     }
 
     protected function loadConfigurations()
