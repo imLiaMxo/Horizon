@@ -9,7 +9,7 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 ## Setup
 
 ~~In order to setup Horizon, simply create a database and setup your ~~ `.env` file.
-Within this, you'll want to create some variables. So, add the following to your `.env` file.
+Within this, you'll want to create some variables. So, add the following to your `.env` file.~~
 
 ```
 STEAM_REDIRECT_URI=http://yoursite.com/auth/user
