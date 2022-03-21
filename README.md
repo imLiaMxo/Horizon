@@ -7,9 +7,9 @@ Horizon is a web application which is aimed to gaming communities who don't fanc
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 ## Setup
-~~~
-In order to setup Horizon, simply create a database and setup your `.env` file.
-Within this, you'll want to create some variables. So, add the following to your `.env` file.~~
+
+~~In order to setup Horizon, simply create a database and setup your ~~ `.env` file.
+Within this, you'll want to create some variables. So, add the following to your `.env` file.
 
 ```
 STEAM_REDIRECT_URI=http://yoursite.com/auth/user
@@ -19,8 +19,8 @@ Laravel is accessible, powerful, and provides tools required for large, robust a
 BM_SECRET_KEY=BATTLEMETRICS_AUTH_TOKEN(https://www.battlemetrics.com/developers/token)
 ```
 
-You will then need to migrate the database by running `php artisan migrate`. The first account to login will become the ``root`` user.
+~~You will then need to migrate the database by running `php artisan migrate`. The first account to login will become the ``root`` user.
 And finally, to get all the packages and compile the css/js, simply run `npm install` and `npm run dev`.
-Then you're all good!~~~
+Then you're all good!~~
 
-NEW INSTALLATION PAGE
+The new installation page will do it for you! Just input your SQL details and API Keys, and voila!
