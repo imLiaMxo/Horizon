@@ -10,17 +10,24 @@
         "production": "mix --production"
     },
     "devDependencies": {
-        "axios": "^0.21",
+        "@tailwindcss/forms": "^0.5.0",
+        "autoprefixer": "^10.4.4",
+        "axios": "^0.21.4",
         "laravel-mix": "^6.0.6",
         "lodash": "^4.17.19",
-        "postcss": "^8.1.14"
+        "postcss": "^8.4.12",
+        "postcss-import": "^14.0.2",
+        "resolve-url-loader": "^5.0.0",
+        "sass": "^1.49.9",
+        "sass-loader": "^12.6.0",
+        "tailwindcss": "^3.0.23"
     },
     "dependencies": {
-        "@ckeditor/ckeditor5-build-classic": "^32.0.0",
         "@ckeditor/ckeditor5-alignment": "^32.0.0",
         "@ckeditor/ckeditor5-autoformat": "^32.0.0",
         "@ckeditor/ckeditor5-basic-styles": "^32.0.0",
         "@ckeditor/ckeditor5-block-quote": "^32.0.0",
+        "@ckeditor/ckeditor5-build-classic": "^32.0.0",
         "@ckeditor/ckeditor5-cloud-services": "^32.0.0",
         "@ckeditor/ckeditor5-dev-utils": "^25.4.5",
         "@ckeditor/ckeditor5-dev-webpack-plugin": "^25.4.5",
@@ -39,10 +46,13 @@
         "@ckeditor/ckeditor5-table": "^32.0.0",
         "@ckeditor/ckeditor5-theme-lark": "^32.0.0",
         "@ckeditor/ckeditor5-typing": "^32.0.0",
-        "jqeury": "^0.0.1-security",
+        "@srexi/purecounterjs": "^1.1.1",
+        "aos": "^2.3.4",
         "jquery": "^3.6.0",
+        "jquery.easing": "^1.4.1",
         "popper.js": "^1.16.1",
-        "tippy.js": "^6.3.7",
-        "toastr": "^2.1.4"
+        "tippy.js": "^6.2.7",
+        "toastr": "^2.1.4",
+        "tw-elements": "^1.0.0-alpha11"
     }
 }
