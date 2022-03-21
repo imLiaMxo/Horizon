@@ -1,0 +1,36 @@
+// Custom Varialbes
+
+$primaryColor: #1c1c28;
+$secondaryColor: #28293d;
+$accentColor: #3e81e7;
+
+html, body {
+    scroll-behavior: smooth;
+    scrollbar-width: thin;
+    scrollbar-color: $secondaryColor $primaryColor;
+}
+
+::-moz-selection {
+    background-color: #{ $accentColor + '20' };
+}
+  
+::selection {
+    color: $accentColor;
+}
+  
+::-webkit-scrollbar {
+    width: 10px;
+}
+  
+::-webkit-scrollbar-track {
+    background: $primaryColor;
+}
+  
+::-webkit-scrollbar-thumb {
+    background-color: $secondaryColor;
+    border: 3px solid $primaryColor;
+}
+  
+
+// Tippy Import
+@import 'extensions/tippyjs';

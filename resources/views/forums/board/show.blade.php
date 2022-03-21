@@ -46,7 +46,7 @@
                     </div>
                 <hr class="hr mt-4 mb-2"/>
                 @forelse($threads as $thread)
-                    <a href="{{ route('forums.threads.show', $thread->id) }}" class="w-full flex p-3 pl-4 items-center hover:bg-gray-300 dark:hover:bg-indigo-700 rounded-lg cursor-pointer border border-gray-400 dark:border-indigo-800 mb-2">
+                    <a href="{{ route('forums.threads.show', $thread->id) }}" class="w-full flex p-3 pl-4 items-center hover:bg-gray-300 dark:hover:bg-indigo-700 rounded-lg cursor-pointer border border-gray-400 dark:border-indigo-800 mb-2" data-tippy-content="{{ substr($thread->content, 0, 50) }}">
                         <div class="mr-4">
                             <div class="h-9 w-9 rounded-sm flex items-center justify-center text-3xl" >
                                 <img src="{{ $thread->user->avatar }}" class="rounded relative"/>

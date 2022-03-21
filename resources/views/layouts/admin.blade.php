@@ -4,15 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" type="text/css" 
-     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-      </script>
+    @toastr_css
           <script>
             if (!('theme' in localStorage)) {
                 localStorage.theme = 'dark';
@@ -60,11 +55,38 @@
       <div class="flex items-start justify-between">
           <div class="h-screen hidden lg:block shadow-lg relative w-80">
               <div class="bg-white h-full dark:bg-gray-700">
-                  <div class="flex items-center justify-start pt-6 ml-8">
+                  <div class="flex items-center justify-center pt-6">
                       <p class="font-bold dark:text-white text-xl">
                           Nomads.
                       </p>
                   </div>
+                      <div class="flex items-center justify-center pt-6">
+                        <a x-data="{}" x-on:click="updateTheme('dark')" href="#"
+                            class="block dark:hidden text-base font-medium motion-safe:transition text-neutral-500 hover:text-primary-500 dark:text-neutral-100"
+                            >
+                            <span class="sr-only">Dark mode</span>
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.25 15.7499C17.2352 16.2904 16.23 16.25 15 16.25C10.9959 16.25 7.75 13.0041 7.75 9.00001C7.75 7.77001 7.70951 6.76474 8.25 5.74994C5.96125 6.96891 4.75 9.2259 4.75 12C4.75 16.004 7.99594 19.25 12 19.25C14.7741 19.25 17.031 18.0387 18.25 15.7499Z"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 4.75C16 6.95914 14.9591 9 12.75 9C14.9591 9 16 11.0409 16 13.25C16 11.0409 17.0409 9 19.25 9C17.0409 9 16 6.95914 16 4.75Z"/>
+                            </svg>
+                        </a>
+                        <a x-data="{}" x-on:click="updateTheme('light')" href="#"
+                            class="hidden dark:block text-base font-medium motion-safe:transition text-neutral-500 hover:text-primary-500 dark:text-neutral-100"
+                            >
+                            <span class="sr-only">Light Mode</span>
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3.25" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 2.75V4.25"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 6.75L16.0659 7.93416"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21.25 12.0001L19.75 12.0001"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.25 17.2501L16.0659 16.066"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 19.75V21.25"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.9341 16.0659L6.74996 17.25"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.25 12.0001L2.75 12.0001"/>
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7.93405 7.93423L6.74991 6.75003"/>
+                            </svg>
+                        </a>
+                    </div>
                   <nav class="mt-6">
                       <div>
                           <a class="w-full text-gray-400 flex items-center pl-6 p-2 my-2 transition-colors duration-200 justify-start hover:text-gray-800 border-l-4 border-transparent" href="{{ route('admin.home') }}">
@@ -158,7 +180,9 @@
       </div>
   </main>
   
-      <script src="{{ asset('js/app.js?v=10') }}"></script>
+      <script src="{{ asset('js/app.js?v=13') }}"></script>
+      @toastr_js
+      @toastr_render
       @yield('scripts')
   </body>
 </html>

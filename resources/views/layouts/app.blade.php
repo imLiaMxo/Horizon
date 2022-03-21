@@ -38,13 +38,7 @@
     <meta name="twitter:card" content="summary">
 
     <!-- Stuff -->
-    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
-      </script>
           <script>
             if (!('theme' in localStorage)) {
                 localStorage.theme = 'dark';
@@ -83,14 +77,21 @@
         
             updateTheme();
         </script>
+
+        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <title>Nomads | @yield('title')</title>
     </head>
     
     <body class="duration-500 bg-white dark:bg-gray-600">
-        @yield('content')
-        @include('includes.footer')
-        <script src="{{ asset('js/app.js?v=5') }}"></script>
-        @yield('scripts')
+        <div class="flex flex-col h-screen justify-between">
+            <main class="mb-auto h-screen">
+                @yield('content')
+            </main>
+            @include('includes.footer')
+            <script src="{{ asset('js/app.js') }}"></script>
+            @yield('scripts')
+        </div>
     </body>
 </html>

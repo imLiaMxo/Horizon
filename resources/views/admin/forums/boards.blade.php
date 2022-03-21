@@ -13,7 +13,7 @@
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 w-full">
         
-        <div class="flex flex-col bg-white shadow-lg rounded p-4">
+        <div class="flex flex-col col-span-2 m-2 rounded shadow-xl bg-white dark:bg-gray-700 dark:text-white text-black w-full p-4">
             <h1 class="text-xl font-semibold text-gray-500">
                 Create New Board
             </h1>
@@ -22,27 +22,27 @@
                 <form action="{{ route('admin.boards.store') }}" method="post" id="create-board">
                     @csrf
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Board Name <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="name" name="name" value="{{old('name')}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Board Name <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="text" id="name" name="name" value="{{old('name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Board Description</label></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" id="description" name="description" value="{{old('description')}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Board Description</label></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" type="text" id="description" name="description" value="{{old('description')}}">
                             <p class="text-yellow text-xs hidden">Optional field</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Board Icon</label> <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" id="icon" name="icon" value="{{old('icon') ?? 'fad fa-server'}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Board Icon</label> <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" type="text" id="icon" name="icon" value="{{old('icon') ?? 'fad fa-server'}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Board Colour</label> <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" id="color" placeholder="#3F51B5" name="color" value="{{old('color') ?? '#3F51B5'}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Board Colour</label> <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" type="text" id="color" placeholder="#3F51B5" name="color" value="{{old('color') ?? '#3F51B5'}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Category</label> <abbr title="required">*</abbr></label>
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Category</label> <abbr title="required">*</abbr></label>
                             <select id="category" name="category" class="flex-1 py-2 rounded text-gray-600 dark:bg-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent outline-none">
                                 @foreach($categories as $category)
                                     <option>{{$category->name}}</option>
@@ -51,7 +51,7 @@
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Allowed Roles</label> <abbr title="required">*</abbr></label>
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Allowed Roles</label> <abbr title="required">*</abbr></label>
                             @foreach($roles as $role)
                                 <div class="mb-1 space-y-1 w-full">
                                     <input
@@ -61,7 +61,7 @@
                                         id="check-{{$role->id}}"
                                         name="roles[]"
                                         checked/>
-                                    <label class="font-semibold text-gray-600 py-2" for="check-{{ $role->name }}">{{ $role->display_name }} ({{ $role->name }})</label>
+                                    <label class="font-semibold text-gray-600 dark:text-white py-2" for="check-{{ $role->name }}">{{ $role->display_name }} ({{ $role->name }})</label>
                                 </div>
                                 @endforeach
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
@@ -72,7 +72,7 @@
                 </form>
             </div>
         </div>
-        <div class="flex flex-col col-span-3 bg-white w-full shadow-lg rounded p-4">
+        <div class="flex flex-col col-span-2 m-2 rounded shadow-xl bg-white dark:bg-gray-700 dark:text-white text-black w-full p-4">
             <h1 class="text-xl font-semibold text-gray-500">
                 Manage Boards
             </h1>
@@ -120,7 +120,7 @@
 
                         Axios.patch('{{ route('admin.boards.sort') }}', {
                             boardId,
-                            parentId: newParent.dataset['id']
+                            //parentId: newParent.dataset['id']
                         }).then(function () {
                             location.reload();
                         }).catch(function () {

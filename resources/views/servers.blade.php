@@ -20,8 +20,10 @@
                     <div class="flex-1 bg-gray-600 dark:bg-gray-400 p-6 flex flex-col justify-between">
                         <a href="#" class="flex-1 h-full inline-grid">
                             <p class="text-xl text-white font-semibold">{{ $server['data']['attributes']['name'] }}</p>
-                            <span class="mt-5 mt-auto text-base text-white pb-0 mb-0 flex-grow"><b>Current Players: {{ $server['data']['attributes']['players'] }}/{{ $server['data']['attributes']['maxPlayers'] }}</b></span>
-                            <span class="mt-auto text-base text-white pb-0 mb-0 flex-grow">Current Map: {{ $server['data']['attributes']['details']['map'] }}</span>
+                            <span class="mt-auto text-base text-white pb-0 mb-0 flex-grow"><b>Current Players: {{ $server['data']['attributes']['players'] }}/{{ $server['data']['attributes']['maxPlayers'] }}</b></span>
+                            @if($server['data']['relationships']['game']['data']['id'] == "postscriptum")
+                                <span class="mt-auto text-base text-white pb-0 mb-0 flex-grow">Current Map: {{ $server['data']['attributes']['details']['map'] }}</span>
+                            @endif
                         </a>
                         <a href="steam://connect/{{ $server['data']['attributes']['ip'] . ':' . $server['data']['attributes']['port'] }}" class="sm:mt-3 mt-flex transition ml-auto text-right items-center px-4 py-2 border-0 text-base
                         font-medium rounded-md shadow-sm text-white bg-red-400 hover:text-white hover:bg-neutral-300 focus:outline-none

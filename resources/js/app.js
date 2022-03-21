@@ -18,6 +18,11 @@ tippy.default('[data-tippy-content]', {
     allowHTML: true
 });
 
+const aos = require('aos');
+aos.init({
+    once: true
+});
+
 // CKEditor 5 Implimenetations
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
 

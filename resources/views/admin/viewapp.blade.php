@@ -12,8 +12,8 @@
     </h2>
 
     <div class="font-sans h-screen w-full flex flex-row justify-center items-center">
-        <div class="card w-96 mx-auto bg-white shadow-xl hover:shadow">
-           <img class="w-32 mx-auto rounded-full -mt-20 border-8 border-white" src="{{ $userData->avatar }}">
+        <div class="card w-96 mx-auto bg-white dark:bg-gray-700 dark:text-white text-black shadow-xl hover:shadow">
+           <img class="w-32 mx-auto rounded-full -mt-20" src="{{ $userData->avatar }}">
            <div class="text-center mt-2 text-3xl font-medium">{{ $userData->name }}</div>
            <div class="text-center mt-2 font-light text-sm">{{ $application->age }} years old</div>
            <div class="text-center font-normal text-lg">{{ $application->country }}</div>
@@ -38,7 +38,7 @@
                         @method('PATCH')
                         <input type="hidden" name="identifier" value="{{ $application->id }}"/>
                         <input type="hidden" name="action" value="decline"/>
-                        <input type="text" id="reason" name="reason" placeholder="Reasoning" class="flex-1 w-full rounded text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent outline-none mb-2" required=""/>
+                        <input type="hidden" name="reason" value="n/a"/>
                         <button type="submit" class="border-2 border-red-600 text-black px-8 py-3 rounded-md text-lg text-center font-medium hover:bg-red-600 transition duration-300 dark:text-white">Decline</button>
                     </form>
                   </div>

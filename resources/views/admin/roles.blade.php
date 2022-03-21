@@ -10,7 +10,7 @@
         Use the navigation panel on the left to configure your application.
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 w-full">
-        <div class="flex flex-col bg-white shadow-lg rounded p-4">
+        <div class="flex flex-col m-2 rounded shadow-xl bg-white dark:bg-gray-700 dark:text-white text-black w-full p-4">
             <h1 class="text-xl font-semibold text-gray-500">
                 Create New Role
             </h1>
@@ -20,24 +20,24 @@
                     @csrf
                     <div class="md:flex flex-row md:space-x-4 w-full text-xs">
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Role Name <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="name"
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Role Name <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="text" id="name"
                             placeholder="administrator" name="name" value="{{old('name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Display Name <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" placeholder="Administrator" name="display_name" value="{{old('display_name')}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Display Name <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="text" placeholder="Administrator" name="display_name" value="{{old('display_name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                     </div>
                     <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-gray-500 py-2">Display Colour <abbr title="required">*</abbr></label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="color" name="color" value="{{old('color', '#673AB7')}}">
+                        <label class="font-semibold text-gray-500 dark:text-white py-2">Display Colour <abbr title="required">*</abbr></label>
+                        <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="text" id="color" name="color" value="{{old('color', '#673AB7')}}">
                     </div>
                     <div class="mb-3 space-y-2 w-full text-xs">
-                        <label class="font-semibold text-gray-500 py-2">Role Precedence <abbr title="required">*</abbr></label>
-                        <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="number" id="precedence" name="precedence" value="{{old('precedence', 5)}}">
+                        <label class="font-semibold text-gray-500 dark:text-white py-2">Role Precedence <abbr title="required">*</abbr></label>
+                        <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="number" id="precedence" name="precedence" value="{{old('precedence', 5)}}">
                     </div>
 
                     @foreach($permissions as $permission)
@@ -48,7 +48,7 @@
                         value="{{ $permission->name }}"
                         id="check-{{ $permission->id }}"
                         name="permissions[]">
-                        <label for="check-{{ $permission->id }}" class="font-semibold text-gray-500 py-2">{{ $permission->display_name}} <abbr title="required">*</abbr></label>
+                        <label for="check-{{ $permission->id }}" class="font-semibold text-gray-500 dark:text-white py-2">{{ $permission->display_name}} <abbr title="required">*</abbr></label>
                     </div>
                     @endforeach
                     <p class="text-xs text-red-500 text-right my-3">Required fields are marked with an
@@ -65,7 +65,7 @@
             @foreach($roles as $role)
             <!-- start -->
             <div x-data="{ 'edit{{$role->name}}': false, 'delete{{$role->name}}': false}">
-                <div class="flex items-center relative p-2 w-full bg-white rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 m-2 flow-root">
+                <div class="flex items-center relative p-2 w-full bg-white dark:bg-gray-200 rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 m-2 flow-root">
                     <div class="ml-3 float-left">
                         <p class="font-medium text-[{{$role->color}}]">{{ $role->display_name }}</p>
                         <p class="text-sm text-gray-600">{{ $role->precedence }}</p>
@@ -90,16 +90,16 @@
                     </div>
                 </div>
                 <!-- EDIT MODAL -->
-                <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-black bg-opacity-50" x-show="edit{{$role->name}}">
+                <div class="fixed inset-0 z-30 flex items-center justify-center overflow-auto bg-opacity-50" x-show="edit{{$role->name}}">
                     <div
-                        class="max-w-3xl px-6 py-4 mx-auto text-left bg-white rounded shadow-lg"
+                        class="max-w-3xl px-6 py-4 mx-auto text-left bg-white dark:bg-gray-200 rounded shadow-lg"
                         x-on:click.away="edit{{$role->name}} = false;"
                         x-transition:enter="motion-safe:ease-out duration-300"
                         x-transition:enter-start="opacity-0 scale-90"
                         x-transition:enter-end="opacity-100 scale-100"
                         >
                         <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+                            <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl">
                                 Editing <span class="text-[{{$role->color}}]">{{ $role->display_name }}</span>
                             </h3>
                             <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" x-on:click="edit{{ $role->name }} = false;">
@@ -154,10 +154,10 @@
                         x-transition:enter-end="opacity-100 scale-100"
                         >
                         <div class="flex justify-between items-start p-5 rounded-t border-b dark:border-gray-600">
-                            <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl dark:text-white">
+                            <h3 class="text-xl font-semibold text-gray-900 lg:text-2xl">
                                 Delete <span class="text-[{{$role->color}}]">{{ $role->display_name }}</span>
                             </h3>
-                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white" x-on:click="delete{{ $role->name }} = false;">
+                            <button type="button" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-600" x-on:click="delete{{ $role->name }} = false;">
                                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>  
                             </button>
                         </div>

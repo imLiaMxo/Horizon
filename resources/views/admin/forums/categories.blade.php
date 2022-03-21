@@ -12,7 +12,7 @@
     </h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mt-4 w-full">
-        <div class="flex flex-col bg-white shadow-lg rounded p-4">
+        <div class="flex flex-col m-2 rounded shadow-xl bg-white dark:bg-gray-700 dark:text-white text-black w-full p-4">
             <h1 class="text-xl font-semibold text-gray-500">
                 Create New Category
             </h1>
@@ -21,13 +21,13 @@
                 <form action="{{ route('admin.categories.store') }}" method="post" id="create-role">
                     @csrf
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Category Name <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" required="required" type="text" id="name" name="name" value="{{old('name')}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Category Name <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" required="required" type="text" id="name" name="name" value="{{old('name')}}">
                             <p class="text-red text-xs hidden">Please fill out this field.</p>
                         </div>
                         <div class="mb-3 space-y-2 w-full text-xs">
-                            <label class="font-semibold text-gray-500 py-2">Category Description</label> <abbr title="required">*</abbr></label>
-                            <input class="appearance-none block w-full bg-grey-lighter text-grey-darker border border-grey-lighter rounded-lg h-10 px-4" type="text" id="description" name="description" value="{{old('description')}}">
+                            <label class="font-semibold text-gray-500 dark:text-white py-2">Category Description</label> <abbr title="required">*</abbr></label>
+                            <input class="appearance-none block w-full text-gray-600 dark:text-white placeholder-gray-400 dark:placeholder-white bg-transparent rounded-lg h-10 px-4" type="text" id="description" name="description" value="{{old('description')}}">
                             <p class="text-yellow text-xs hidden">Optional field</p>
                         </div>
                     <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
@@ -36,7 +36,7 @@
                 </form>
             </div>
         </div>
-        <div class="flex flex-col bg-white shadow-lg rounded p-4">
+        <div class="flex flex-col m-2 rounded shadow-xl bg-white dark:bg-gray-700 dark:text-white text-black w-full p-4">
             <h1 class="text-xl font-semibold text-gray-500">
                 Delete Categories
             </h1>

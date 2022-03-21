@@ -43,14 +43,23 @@ class AdminApplicationController extends Controller
     {
         $application = Apply::where('id', $assign->input('identifier'))->update(['assigned_to' => $assign->input('assigner') ? $assign->input('assigner') : NULL, 'current_step' => $assign->input('assigner') ? 1 : NULL]);
 
-        toastr()->success('Successfully done that!');
+        toastr()->success('Successfully (un)assigned application!');
         return redirect()->route('admin.apply.view', $assign->input('identifier'));
     }
 
     public function complete(CompleteForm $request): RedirectResponse
     {
         $application = Apply::where('id', $request->input('identifier'))->update(['current_step' => $request->input('action') == 'decline' ? 1 : 2, 'reason' => $request->input('reason') ? $request->input('reason') : NULL, 'outcome' => $request->input('action') == 'decline' ? 1 : 2]);
-        User::where('steamid', $request->steamid)->first()->assignRole('new_member');
+        if($request->input('action') == 'accept')
+        {
+            User::where('steamid', $request->steamid)->first()->assignRole('new_member');
+            toastr()->success('Application has been accepted. Assigned role.');
+        }
+        else
+        {
+            toastr()->error('Application has been rejected!');
+        }
+
         return redirect()->route('admin.apply.view', $request->input('identifier'));
     }
 
