@@ -14,7 +14,6 @@ Within this, you'll want to create some variables. So, add the following to your
 ```
 STEAM_REDIRECT_URI=http://yoursite.com/auth/user
 STEAM_CLIENT_SECRET=STEAM_API_KEY(https://steamcommunity.com/dev/apikey)
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
 BM_SECRET_KEY=BATTLEMETRICS_AUTH_TOKEN(https://www.battlemetrics.com/developers/token)
 ```
