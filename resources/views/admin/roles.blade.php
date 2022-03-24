@@ -64,10 +64,10 @@
         <div class="flex flex-col">
             @foreach($roles as $role)
             <!-- start -->
-            <div class="flex items-center relative p-2 w-full bg-white dark:bg-gray-200 rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 m-2 flow-root">
+            <div class="flex items-center relative p-2 w-full bg-white dark:bg-gray-600 rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 m-2 flow-root">
                 <div class="ml-3 float-left">
                     <p class="font-medium text-[{{$role->color}}]">{{ $role->display_name }}</p>
-                    <p class="text-sm text-gray-600">{{ $role->precedence }}</p>
+                    <p class="text-sm text-gray-600 dark:text-white">{{ $role->precedence }}</p>
                 </div>
                 <div class="float-right">
                     <button type="button" class="text-gray-600 flex my-2 transition-colors duration-200 float-right hover:text-indigo-500" data-bs-toggle="modal" data-bs-target="#edit-{{$role->id}}">

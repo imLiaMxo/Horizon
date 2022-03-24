@@ -38,7 +38,7 @@
         <div class="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="edit-{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog relative w-auto pointer-events-none">
                 <div class="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white dark:bg-gray-600 bg-clip-padding rounded-md outline-none text-current">
-                    <form class="mt-5 container" action="{{ route('admin.users.update', $user->id) }}" method="POST">
+                    <form action="{{ route('admin.users.update', $user->id) }}" method="POST">
                         @csrf
                         <input type="hidden" name="userid" value="{{ $user->id }}"/>
                         <div class="modal-header flex flex-shrink-0 items-center justify-between p-4 border-b border-gray-200 rounded-t-md">

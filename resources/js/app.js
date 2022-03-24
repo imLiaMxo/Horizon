@@ -18,29 +18,6 @@ tippy.default('[data-tippy-content]', {
     allowHTML: true
 });
 
-const aos = require('aos');
-aos.init({
-    once: true
-});
-
-// CKEditor 5 Implimenetations
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic/build/ckeditor';
-
-// ref: https://tobiasahlin.com/blog/move-from-jquery-to-vanilla-javascript/#document-ready
-
-var ready = (callback) => {
-  if (document.readyState != "loading") callback();
-  else document.addEventListener("DOMContentLoaded", callback);
-}
-
-ready(() => { 
-    ClassicEditor
-        .create(document.querySelector('textarea:not([no-editor])'),{})
-        .catch(error => {
-            console.log(`error`, error)
-        });
-});
-
 window.toastr = require('toastr');
 
 window.Axios = require('axios');

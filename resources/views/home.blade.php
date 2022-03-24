@@ -8,14 +8,14 @@
     <div class="max-w-7xl mx-auto py-3 px-3 sm:px-6 lg:px-8">
         <div class="mt-6 flex-col flex shadow-lg justify-between items-center rounded bg-gradient-to-r from-grey-300 to-grey-200 dark:from-gray-700 dark:to-gray-600 dark:to-gray-700  overflow-hidden max-w-7xl p-2 md:flex-row sm:p-6 lg:p-8">
             <div class="flex items-center flex-col md:w-6/12 md:items-start lg:pr-8 py-3 md:py-0">
-                <h1 class="flex flex-col items-center text-center text-3xl font-extrabold tracking-tight text-black dark:text-white md:items-start sm:text-4xl"><span class="block">A community fit for the </span><span class="block">Best.</span></h1>
+                <h1 class="flex flex-col items-center text-center text-3xl font-extrabold tracking-tight text-black dark:text-white md:items-start sm:text-4xl">{!! $configs['hero_title']!!}</h1>
                 <p class="text-black dark:text-white mt-6 text-center md:text-left md:mr-10">
-                    Spend less time worrying about who you're playing with, spend more time having fun with the <strong>best</strong> on our servers which are online 24/7!
+				{!! $configs['hero_desc']!!}
                 </p>
-                <div class="mt-6 flex"><a href="{{ route("apply") }}"><button type="button" class="inline-flex items-center mb-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Join Nomads.</button></a></div>
+                <div class="mt-6 flex"><a href="{{ route("apply") }}"><button type="button" class="inline-flex items-center mb-4 px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-indigo-700 bg-white hover:bg-indigo-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Join {{$configs['site_name']}}</button></a></div>
             </div>
             <div class="relative">
-                <img src="{{ asset("img/89e321226740c4e8a15ece6605a6378e.png") }}" decoding="async" data-nimg="intrinsic" class="rounded h-64 w-64 hide-overflow z-0">
+                <img src="{{ $configs['site_logo'] }}" decoding="async" data-nimg="intrinsic" class="rounded h-64 w-64 hide-overflow z-0">
             </div>
         </div>
     </div>
