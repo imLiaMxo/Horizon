@@ -13,8 +13,14 @@ const mix = require('laravel-mix');
 
 mix.js("resources/js/app.js", "public/js")
     .js("resources/js/installer.js", "public/js")
+    .js('resources/js/tinymce.js', 'public/js')
+
     .sass("resources/sass/app.scss", "public/css")
     .sass("resources/sass/installer.scss", "public/css")
+
     .postCss("resources/sass/theme.css", "public/css", [
         require("tailwindcss"),
-      ]);
+      ])
+    
+    .copy('node_modules/tinymce/skins', 'public/js/skins')
+    .copy('node_modules/tinymce/icons', 'public/js/icons');
