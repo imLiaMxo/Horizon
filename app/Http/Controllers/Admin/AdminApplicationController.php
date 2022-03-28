@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Notifications\UserApplied;
+use App\Notifications\ApplicationAssigned;
 use App\Http\Requests\Admin\RoleForm;
 use App\Http\Requests\Admin\AssignForm;
 use App\Http\Requests\Admin\CompleteForm;
@@ -44,13 +45,14 @@ class AdminApplicationController extends Controller
     public function assign(AssignForm $assign): RedirectResponse
     {
         $application = Apply::where('id', $assign->input('identifier'))->update(['assigned_to' => $assign->input('assigner') ? $assign->input('assigner') : NULL, 'current_step' => $assign->input('assigner') ? 1 : NULL]);
-        $appUser = User::where('steamid', $application->steamid)->first();
+        $appId = Apply::where('id', $assign->input('identifier'))->first();
+        $appUser = User::where('steamid', $appId->steamid)->first();
         $adminUser = User::where('steamid', $assign->input('assigner'))->first();
 
         if($assign->input('assigner'))
         {
             toastr()->success('Successfully assigned application!');
-            Notification::send($appUser, new ApplicationAssigned($adminUser->name, 'has been assigned your application!', route('viewapp', ['applicationId' => $application->id])));
+            Notification::send($appUser, new ApplicationAssigned($adminUser->name, 'has been assigned your application!', route('apply')));
         }
         else
         {
