@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+    <!--<link rel="stylesheet" href="{{ asset('css/theme.css') }}">-->
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+      </script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+      <script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     @toastr_css
           <script>
@@ -47,7 +56,7 @@
             updateTheme();
         </script>
       <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <title>Nomads Admin | @yield('title')</title>
+    <title>{{$configs['site_name']}} Admin | @yield('title')</title>
 </head>
 
   <body> 
@@ -57,7 +66,7 @@
               <div class="bg-white h-full dark:bg-gray-700">
                   <div class="flex items-center justify-center pt-6">
                       <p class="font-bold dark:text-white text-xl">
-                          Nomads.
+                      {{$configs['site_name']}}
                       </p>
                   </div>
                       <div class="flex items-center justify-center pt-6">
@@ -197,7 +206,7 @@
       </div>
   </main>
   
-      <script src="{{ asset('js/app.js?v=13') }}"></script>
+      <script src="{{ asset('js/app.js?v=04') }}"></script>
       @toastr_js
       @toastr_render
       @yield('scripts')

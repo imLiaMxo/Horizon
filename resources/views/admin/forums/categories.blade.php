@@ -31,7 +31,7 @@
                             <p class="text-yellow text-xs hidden">Optional field</p>
                         </div>
                     <div class="mt-5 text-right md:space-x-3 md:block flex flex-col-reverse">
-                        <button class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Create Role</button>
+                        <button class="mb-2 md:mb-0 bg-green-400 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Create Category</button>
                     </div>
                 </form>
             </div>
@@ -45,9 +45,9 @@
             @foreach($categories as $cat)
             <!-- start -->
             <div x-data="{ 'delete{{$cat->name}}': false}">
-                <div class="flex items-center relative p-2 w-full bg-white rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 mb-2 flow-root">
+                <div class="flex items-center relative p-2 w-full bg-white dark:bg-gray-600 rounded-lg overflow-hidden shadow hover:shadow-md border-solid border-2 border-sky-500 mb-2 flow-root">
                     <div class="ml-3 float-left">
-                        <p class="font-medium text-black">{{ $cat->name }}</p>
+                        <p class="font-medium text-black dark:text-white">{{ $cat->name }}</p>
                     </div>
                     <div class="float-right">
                         <button type="button" class="text-gray-600 flex my-2 transition-colors duration-200 float-right hover:text-red-500" x-on:click="delete{{ $cat->name }} = true;">

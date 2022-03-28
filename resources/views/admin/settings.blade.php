@@ -63,3 +63,7 @@
 </div>
 
 @endsection
+
+@section('scripts')
+<script src="{{ asset('js/tinymce.js?v=1123') }}"></script>
+@endsection

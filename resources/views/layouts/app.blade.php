@@ -80,8 +80,9 @@
 
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
+        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
-        <title>Nomads | @yield('title')</title>
+        <title>{{$configs['site_name']}} | @yield('title')</title>
     </head>
     
     <body class="duration-500 bg-white dark:bg-gray-600">
@@ -90,7 +91,7 @@
                 @yield('content')
             </main>
             @include('includes.footer')
-            <script src="{{ asset('js/app.js') }}"></script>
+            <script src="{{ asset('js/app.js?v=6') }}"></script>
             @yield('scripts')
         </div>
     </body>
