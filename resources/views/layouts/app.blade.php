@@ -39,6 +39,7 @@
 
     <!-- Stuff -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
           <script>
             if (!('theme' in localStorage)) {
                 localStorage.theme = 'dark';
@@ -78,20 +79,30 @@
             updateTheme();
         </script>
 
+<!--
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
         <link rel="stylesheet" href="{{ asset('css/theme.css') }}">
-        <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+        -->
+
+        <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+      </script>
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@mdi/font@6.5.95/css/materialdesignicons.min.css">
         <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
         <title>{{$configs['site_name']}} | @yield('title')</title>
     </head>
     
     <body class="duration-500 bg-white dark:bg-gray-600">
-        <div class="flex flex-col h-screen justify-between">
-            <main class="mb-auto h-screen">
+        <div class="flex flex-col justify-between min-h-screen">
+            <main class="mb-auto flex-grow" id="app">
                 @yield('content')
             </main>
             @include('includes.footer')
-            <script src="{{ asset('js/app.js?v=6') }}"></script>
+            <script src="{{ asset('js/app.js') }}"></script>
             @yield('scripts')
         </div>
     </body>

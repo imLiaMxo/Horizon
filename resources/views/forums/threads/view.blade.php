@@ -67,32 +67,110 @@
             </div>
 
             <!-- Replies -->
-            <div class="dark:text-white w-full rounded overflow-hidden p-1 mt-5 transition-500">
                 @foreach($posts as $post)
-                    <div class="relative grid grid-cols-1 gap-4 p-4 mt-4 mb-4 rounded-lg bg-white dark:bg-gray-700 shadow-lg">
-                        <div class="relative flex gap-4">
-                            <img src="{{ $post->user->avatar }}" class="relative rounded-lg -top-8 -mb-4 bg-white h-20 w-20" alt="" loading="lazy">
-                            <div class="flex flex-col w-full">
-                                <div class="flex flex-row justify-between">
-                                    <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">{{ $post->user->name }}</p>
-                                </div>
-                                <p class="text-gray-400 text-sm">{{ $post->created_at->diffForHumans() }}</p>
-                            </div>
+
+                <div class="w-full h-full grid bg-white dark:bg-gray-700 mt-5 rounded grid-cols-1 md:grid-cols-[200px,minmax(900px,1fr)]">
+                    <aside class="relative isolate overflow-hidden flex flex-col items-center break-words w-full h-full md:min-h-[22rem] p-4 space-y-2 motion-safe:transition">
+                        <img class="absolute inset-0 w-full h-full object-cover object-center max-h-[18rem] opacity-50" src="{{ $post->user->avatar }}" alt="{{ $post->user->name }}" />
+                        <!-- dark mode gradient -->
+                        <div class="hidden dark:block absolute z-10 inset-0 w-full h-full max-h-[18rem] bg-gradient-to-b from-transparent to-gray-700"></div>
+                        <div class="hidden dark:block absolute z-10 inset-0 w-full h-full max-h-[18rem] bg-gradient-to-b from-transparent to-gray-700"></div>
+
+                        <!-- light mode gradient -->
+                        <div class="dark:hidden absolute z-10 inset-0 w-full h-full max-h-[18rem] bg-gradient-to-b from-transparent to-white"></div>
+                        <div class="dark:hidden absolute z-10 inset-0 w-full h-full max-h-[18rem]-gradient-to-b from-transparent to-white"></div>
+
+                        <div class="z-40 relative text-center">
+                            <a href="#" class="h4 text-gray-900 dark:text-white">
+                                {{ $post->user->name }}
+                            </a>
+                            <p id="user-title" class="text-xs text-gray-600 dark:text-white"></p>
                         </div>
-                        <p class="-mt-4">{!! $post->content !!}</p>
-                    </div>
+
+                        <div class="z-40 relative w-24 h-24"></div>
+
+                        <p id="role" class="z-40 relative text-sm text-gray-300 rounded-full px-2 border border-gray-100 dark:border-gray-600">
+                            <!-- Role -->
+                        </p>
+                    </aside>
+
+                    <article class="flex flex-col">
+                        <header class="flex items-center text-neutral-300 text-xs md:text-sm py-2 p-4">
+                            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle cx="12" cy="12" r="7.25" stroke="currentColor" stroke-width="1.5"></circle>
+                                <path stroke="currentColor" stroke-width="1.5" d="M12 8V12L14 14"></path>
+                            </svg>
+                            <p class="ml-1">
+                                4 months ago
+                            </p>
+
+                            <a class="ml-auto" href="#{{ $post->id }}" id="{{ $post->id }}">
+                                # {{ $post->id }}
+                            </a>
+                        </header>
+                        <div class="prose prose-neutral dark:prose-invert break-words whitespace-normal max-w-none p-4 flex-grow">
+                            {!! $post->content !!}
+                        </div>
+                    </article>
+
+                    <footer class="p-4 flex col-span-full border-t border-neutral-100 dark:border-neutral-600 text-sm" likes="likes">
+
+                    </footer>
+                </div>
+
+                <!-- Content -->
+                
                 @endforeach
 
                 {{ $posts->links() }}
-            </div>
 
             <!-- Add Reply -->
-            <div class="bg-white dark:bg-gray-700 w-full rounded shadow-xl overflow-hidden p-1 mt-5 transition-500 h-full">
-                <form action="#" method="POST">
-                    @CSRF
-                    <textarea name="content" id="content" class="rounded" placeholder="Your reply..."></textarea>
-                    <button class="mb-4 md:mb-2 bg-green-400 px-5 mt-2 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-green-500">Reply</button>
-                </form>
+            <div class="bg-white dark:bg-gray-700 w-full rounded shadow-xl overflow-hidden p-2 mt-5 transition-500">
+                    <div class="w-full max-w-6xl mx-auto rounded-xl bg-white dark:bg-gray-700 shadow-lg p-5 text-white" x-data="app()" x-init="init($refs.wysiwyg)">
+                        <div class="border border-gray-200 overflow-hidden rounded-md">
+                            <div class="w-full flex border-b border-gray-200 text-xl text-white">
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('bold')">
+                                    <i class="mdi mdi-format-bold"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('italic')">
+                                    <i class="mdi mdi-format-italic"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 mr-1 hover:text-indigo-500 active:bg-gray-50" @click="format('underline')">
+                                    <i class="mdi mdi-format-underline"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-l border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('formatBlock','P')">
+                                    <i class="mdi mdi-format-paragraph"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('formatBlock','H1')">
+                                    <i class="mdi mdi-format-header-1"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('formatBlock','H2')">
+                                    <i class="mdi mdi-format-header-2"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 mr-1 hover:text-indigo-500 active:bg-gray-50" @click="format('formatBlock','H3')">
+                                    <i class="mdi mdi-format-header-3"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-l border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('insertUnorderedList')">
+                                    <i class="mdi mdi-format-list-bulleted"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 mr-1 hover:text-indigo-500 active:bg-gray-50" @click="format('insertOrderedList')">
+                                    <i class="mdi mdi-format-list-numbered"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-l border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyLeft')">
+                                    <i class="mdi mdi-format-align-left"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyCenter')">
+                                    <i class="mdi mdi-format-align-center"></i>
+                                </button>
+                                <button class="outline-none focus:outline-none border-r border-gray-200 w-10 h-10 hover:text-indigo-500 active:bg-gray-50" @click="format('justifyRight')">
+                                    <i class="mdi mdi-format-align-right"></i>
+                                </button>
+                            </div>
+                            <div class="w-full">
+                                <iframe x-ref="wysiwyg" class="w-full h-96 overflow-y-auto"></iframe>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
     </div>
@@ -100,5 +178,32 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/tinymce.js?v=1123') }}"></script>
+<script>
+    function app() {
+        return {
+            wysiwyg: null,
+            init: function(el) {
+                // Get el
+                this.wysiwyg = el;
+                // Add CSS
+                this.wysiwyg.contentDocument.querySelector('head').innerHTML += `<style>
+                *, ::after, ::before {box-sizing: border-box;}
+                :root {tab-size: 4;}
+                html {line-height: 1.15;text-size-adjust: 100%;}
+                body {margin: 0px; padding: 1rem 0.5rem; color:white;}
+                body {font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";}
+                </style>`;
+                this.wysiwyg.contentDocument.body.innerHTML += `
+                <h1>Hello World!</h1>
+                <p>Welcome to the pure AlpineJS and Tailwind WYSIWYG.</p>
+                `;
+                // Make editable
+                this.wysiwyg.contentDocument.designMode = "on";
+            },
+            format: function(cmd, param) {
+                this.wysiwyg.contentDocument.execCommand(cmd, !1, param||null)
+            }
+        }
+    }
+</script>
 @endsection
